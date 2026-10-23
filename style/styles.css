@@ -1,0 +1,1030 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #1a1a1a;
+    padding: 15px ;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /*Ensures the navbar always stays on top of other layers/content.*/
+}
+
+.navbar .container {
+    display: flex;/*Puts the logo and the navigation links into a flexible row.*/
+    justify-content: space-between;/*Pushes the logo all the way to the left and the navigation menu all the way to the right.*/
+    align-items: center;
+}/*Uses Flexbox to push the logo to the far left and the navigation links to the far right, aligning them neatly in a single row.*/
+
+
+.logo a {
+    color: #050101;
+    background-color: #cc632a;
+    padding: 8px 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-family: "Chewy", system-ui;
+    font-weight: bold;
+}
+
+.nav-links ul {
+    display: flex; 
+    list-style: none;
+}
+
+.nav-links ul li {
+    margin-left: 20px;
+}
+
+.nav-links ul li a {
+    color: #fb4040;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-links ul li a:hover,
+.nav-links ul li a.active {
+    color: #fb4040;
+    border-bottom: 2px solid #0f2bcf;
+}
+
+/* Hero Section */
+.hero {
+    background: url(../images/istockphoto-1054725028-612x612.jpg) no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    color: #fff;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+.btn-light {
+    background-color: #fff;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #29b6f6;
+    color: #fff;
+}
+
+/* Welcome Section Styling */
+.welcome-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.welcome-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+}
+
+/* Creates the three-column layout using Flexbox */
+.cards-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Individual Card Design */
+/* Individual Card Design */
+.card {
+    flex: 1;
+    border: 1px solid #ddd;
+    /* padding: 40px 20px; */
+    background-color: #fff;
+    height: 200px;
+    position: relative; /* Required for absolute positioning of the hover layer */
+    overflow: hidden;   /* Hides the background layer when not hovered */
+    z-index: 1;         /* Ensures text stays above the background layer */
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Creates the black background layer that starts from the top-left */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    
+    /* Start scaled down to 0 from the top-left corner */
+    transform: scale(0);
+    transform-origin: top left; 
+    transition: transform 0.4s ease-in-out;
+    z-index: -1; /* Puts the black background behind the text */
+}
+
+/* Icons, text, and links styling */
+.card-icon {
+    font-size: 28px;
+    color: #29b6f6;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.card p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.read-more {
+    color: #29b6f6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* --- HOVER ACTIONS --- */
+
+/* Expand the black background from top-left to fill the card */
+.card:hover::before {
+    transform: scale(1);
+}
+
+/* Change all text and icon colors to white when hovered */
+.card:hover {
+    border-color: #1a1a1a;
+}
+
+.card:hover h3,
+.card:hover p {
+    color: #fff;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.portfolio-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+/* 3x2 Grid Setup */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual Portfolio Item */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    background-color: #000;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Overlay Layer (Hidden by default) */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-overlay .category {
+    color: #e040fb;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.portfolio-overlay p {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Action Icons inside Overlay */
+.portfolio-actions a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #29b6f6;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 35px;
+    margin: 0 3px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.portfolio-actions a:hover {
+    background-color: #e040fb;
+}
+
+/* Hover Effects */
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1; /* Shows the dark overlay text and icons */
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1); /* Slightly zooms the image */
+}
+
+/* Styling for Section Titles across your website */
+.welcome-section h2,
+.portfolio-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block; /* Required so the underline matches the text width */
+}
+
+/* Creates the little blue line underneath the title */
+.welcome-section h2::after,
+.portfolio-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;          /* Distance below the text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the line perfectly */
+    width: 60px;            /* Length of the line */
+    height: 3px;            /* Thickness of the line */
+    background-color: #29b6f6; /* Blue color */
+}
+
+/* What We Offer Section */
+.offer-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.offer-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline for section title */
+.offer-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #29b6f6;
+}
+
+/* 3x2 Grid Setup using CSS Grid */
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual Offer Card (Reusing similar hover background transition logic) */
+.offer-card {
+    border: 1px solid #ddd;
+    padding: 40px 20px;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    text-align: left; /* Text alignment inside the card matches template */
+    transition: border-color 0.3s ease;
+}
+
+/* Black background hover layer sweeping from top-left */
+.offer-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
+}
+
+/* Offer Card Elements */
+.offer-icon {
+    font-size: 24px;
+    color: #29b6f6;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.offer-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.offer-card p {
+    font-size: 14px;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+/* Hover Actions */
+.offer-card:hover::before {
+    transform: scale(1);
+}
+
+.offer-card:hover {
+    border-color: #1a1a1a;
+}
+
+.offer-card:hover h3,
+.offer-card:hover p,
+.offer-card:hover {
+    color: #fff;
+}
+
+/* Why Choose Us Section */
+.choose-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+/* Two-column layout */
+.choose-grid {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.choose-content,
+.choose-image-box {
+    flex: 1;
+}
+
+.choose-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline for the title */
+.choose-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0; /* Left-aligned for this section */
+    width: 50px;
+    height: 3px;
+    background-color: #29b6f6;
+}
+
+.choose-content > p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+/* Bullet points styling */
+.choose-list {
+    list-style: none;
+}
+
+.choose-list li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    background-color: #fff;
+}
+
+.choose-list li i {
+    color: #29b6f6;
+}
+
+/* Right Image Box */
+.choose-image-box {
+    text-align: center;
+}
+
+.choose-image-box img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Image pagination dots */
+.choose-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.choose-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.choose-dots .dot.active {
+    background-color: #29b6f6;
+}
+
+/* Stats Section Styling */
+.stats-section {
+    background: url('../images/360_F_650906734_X3cz4b75H6gKeS02eeFnt4nVmDtOL2w3.jpg') no-repeat center center/cover;/*So ../ means “go up one directory” from style to project1/, and then images enters the image folder. That makes ../images/... the correct relative path.*/
+    background-attachment: fixed; /* Gives a nice parallax scrolling effect */
+    position: relative;
+}
+
+.stats-overlay {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay to make icons and text pop */
+    padding: 70px 0;
+}
+
+/* 4-column grid layout */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+/* Individual Stat Item */
+.stat-item {
+    color: #fff;
+}
+
+.stat-item i {
+    font-size: 32px;
+    color: #29b6f6;
+    margin-bottom: 15px;
+}
+
+.stat-item h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    font-size: 14px;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Pricing Section Styling */
+.pricing-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.pricing-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline for the title */
+.pricing-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #29b6f6;
+}
+
+/* 3-column pricing grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual Price Card */
+.price-card {
+    border: 1px solid #ddd;
+    padding: 40px 20px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Featured / Highlighted Plan */
+.price-card.featured {
+    border-color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.price-card.featured .featured-title {
+    color: #e53935; /* Red title for featured card as seen in video */
+}
+
+/* Price Box */
+.price-box {
+    background-color: #f7f7f7;
+    padding: 25px 0;
+    margin-bottom: 25px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.price-box .currency {
+    font-size: 18px;
+    vertical-align: top;
+    color: #e53935;
+}
+
+.price-box .amount {
+    font-size: 42px;
+    font-weight: bold;
+    color: #e53935;
+}
+
+.price-box .duration {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* Features List */
+.price-features {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.price-features li {
+    font-size: 14px;
+    color: #666;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Purchase Button */
+.price-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.price-btn:hover {
+    background-color: #29b6f6;
+    color: #fff;
+    border-color: #29b6f6;
+}
+
+/* Hover effect on cards */
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Testimonial Section Styling */
+.testimonial-section {
+    background: url('../images/360_F_650906734_X3cz4b75H6gKeS02eeFnt4nVmDtOL2w3.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.testimonial-overlay {
+    background-color: rgba(0, 0, 0, 0.75); /* Dark background overlay */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.testimonial-card {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.author-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #29b6f6;
+    margin-bottom: 15px;
+}
+
+.testimonial-card h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.author-role {
+    display: block;
+    font-size: 13px;
+    color: #29b6f6;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.testimonial-card p {
+    font-size: 15px;
+    color: #ddd;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+/* Team Section Styling */
+.team-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline for the title */
+.team-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #29b6f6;
+}
+
+/* 3-column team grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual Team Card */
+.team-card {
+    background-color: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.team-img-box {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+}
+
+.team-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%); /* Gives the black & white look seen in the video */
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Social Media Overlay (Slides in or Fades in on hover) */
+.team-social {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.team-social a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.team-social a:hover {
+    color: #29b6f6;
+}
+
+/* Team Info (Name and Role) */
+.team-info {
+    padding: 20px;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.team-info h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+.team-info span {
+    font-size: 13px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.team-card:hover .team-social {
+    opacity: 1;
+}
+
+.team-card:hover .team-img-box img {
+    filter: grayscale(0%); /* Brings color back on hover */
+    transform: scale(1.05);
+}
+
+.team-card:hover .team-info {
+    background-color: #1a1a1a; /* Darkens card background on hover */
+}
+
+.team-card:hover .team-info h3 {
+    color: #fff;
+}
+
+.team-card:hover .team-info span {
+    color: #29b6f6;
+}
+
+/* Blog Section Styling */
+.blog-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.blog-section h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* Blue underline for the title */
+.blog-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #29b6f6;
+}
+
+/* 3-column blog grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+}
+
+/* Individual Blog Card */
+.blog-card {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-img-box {
+    height: 220px;
+    overflow: hidden;
+}
+
+.blog-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+/* Metadata row (Author, Comments, Tag) */
+.blog-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.blog-meta i {
+    color: #29b6f6;
+}
+
+.blog-content h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.blog-content p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.blog-content .read-more {
+    color: #29b6f6;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Hover effects */
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.blog-card:hover .blog-img-box img {
+    transform: scale(1.05);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-logo a {
+    color: #fff;
+    background-color: #e65100;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: #29b6f6;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #888;
+}
